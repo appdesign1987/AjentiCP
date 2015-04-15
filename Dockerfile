@@ -9,9 +9,9 @@ RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.
 
 # install the Mysql / php / git / cron / duplicity / backup ninja
 RUN apt-get -y install    nano openssh-server git mysql-server php5-mysql \
-			  php5-gd php5-mcrypt php5-zip php5-xml php5-iconv php5-curl php5-soap php5-simplexml \
-			  php5-pdo php5-dom php5-cli tar dbus-python dbus-python-devel dbus \
-			  php5-hash backupninja duplicity dialog vsftpd
+			  php5-gd php5-mcrypt php5-curl php-soap\
+			  php5-cli tar dbus \
+			  backupninja duplicity dialog vsftpd
 
 #install Ajenti the control panel
 RUN apt-get -y install install ajenti-v ajenti-v-ftp-vsftpd ajenti-v-php-fpm ajenti-v-mysql
