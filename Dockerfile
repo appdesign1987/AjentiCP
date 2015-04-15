@@ -13,6 +13,12 @@ RUN apt-get -y install    nano openssh-server git mysql-server php5-mysql \
 			  php5-cli tar dbus \
 			  backupninja duplicity dialog vsftpd
 
+#Apache was installed but we don't need it so we remove it.
+RUN apt-get -y remove apache2
+
+#make sure postfix is not installed
+RUN apt-get -y remove postfix
+
 #install Ajenti the control panel
 RUN apt-get -y install install ajenti-v ajenti-v-ftp-vsftpd ajenti-v-php-fpm ajenti-v-mysql
 
