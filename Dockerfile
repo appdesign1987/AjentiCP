@@ -3,7 +3,7 @@ FROM ubuntu:latest
 MAINTAINER paimpozhil@gmail.com
 
 RUN apt-get update
-RUN RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update && apt-get -y install apt-show-versions
+RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update && apt-get -y install apt-show-versions
 #RUN apt-get -y install apt-show-versions && apt-get update && apt-get install -f
 
 
