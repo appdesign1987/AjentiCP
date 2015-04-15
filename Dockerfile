@@ -6,7 +6,7 @@ MAINTAINER paimpozhil@gmail.com
 RUN yum -y install wget
 
 RUN wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-RUN yum localinstall mysql-community-release-el7-*.noarch.rpm
+RUN yum -y localinstall mysql-community-release-el7-*.noarch.rpm
 
 RUN wget -O- https://raw.githubusercontent.com/Eugeny/ajenti/master/scripts/install-rhel7.sh | sh
 
