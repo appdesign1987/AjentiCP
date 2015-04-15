@@ -5,7 +5,7 @@ MAINTAINER paimpozhil@gmail.com
 # Centos default image for some reason does not have tools like Wget/Tar/etc so lets add them
 RUN yum -y install wget
 
-RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-rhel.sh | sh
+RUN wget -O- https://raw.githubusercontent.com/Eugeny/ajenti/master/scripts/install-rhel7.sh | sh
 
 # install the Mysql / php / git / cron / duplicity / backup ninja
 RUN yum -y install /sbin/service which nano openssh-server git mysql-server mysql php-mysql \
