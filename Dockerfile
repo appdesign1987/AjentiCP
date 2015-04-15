@@ -3,7 +3,8 @@ FROM ubuntu:latest
 MAINTAINER paimpozhil@gmail.com
 
 # Centos default image for some reason does not have tools like Wget/Tar/etc so lets add them
-RUN apt-get -y install wget
+RUN apt-get update
+RUN apt-get -y install wget apt-show-versions
 
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
