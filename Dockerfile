@@ -14,7 +14,7 @@ RUN apt-get -y install wget
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
 # install the Mysql / php / git / cron / duplicity / backup ninja
-RUN apt-get -y install    nano openssh-server git mysql-server php5-mysql \
+RUN apt-get -y --no-recommends install nano openssh-server git mysql-server php5-mysql \
 			  php5-gd php5-mcrypt php5-curl php-soap\
 			  php5-cli tar\
 			  backupninja duplicity vsftpd
@@ -25,8 +25,11 @@ RUN apt-get -y remove apache2
 #make sure postfix is not installed
 RUN apt-get -y remove postfix
 
+#let's cleanup
+RUN apt-get -y autoremove
+
 #install Ajenti the control panel
-RUN apt-get -y install install ajenti-v ajenti-v-ftp-vsftpd ajenti-v-php-fpm ajenti-v-mysql
+RUN apt-get -y install ajenti-v ajenti-v-ftp-vsftpd ajenti-v-php-fpm ajenti-v-mysql
 
 ## fix the locale problems iwth default centos image.. may not be necessary in future. 
 #RUN yum -y reinstall glibc-common
