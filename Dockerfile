@@ -3,13 +3,13 @@ FROM ubuntu:latest
 MAINTAINER paimpozhil@gmail.com
 
 RUN apt-get update
-#RUN rm -R /etc/apt/apt.conf.d/02compress-indexes
-RUN apt-get -y install apt-show-versions && apt-get update && apt-get install -f
+RUN RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update && apt-get -y install apt-show-versions
+#RUN apt-get -y install apt-show-versions && apt-get update && apt-get install -f
 
 
 # Centos default image for some reason does not have tools like Wget/Tar/etc so lets add them
-RUN apt-get update
-RUN apt-get -y install wget apt-show-versions
+#RUN apt-get update
+RUN apt-get -y install wget
 
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
