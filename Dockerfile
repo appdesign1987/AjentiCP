@@ -1,9 +1,12 @@
-FROM centos:centos6
+FROM centos:7
 
 MAINTAINER paimpozhil@gmail.com
 
 # Centos default image for some reason does not have tools like Wget/Tar/etc so lets add them
 RUN yum -y install wget
+
+RUN wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+RUN yum localinstall mysql-community-release-el7-*.noarch.rpm
 
 RUN wget -O- https://raw.githubusercontent.com/Eugeny/ajenti/master/scripts/install-rhel7.sh | sh
 
