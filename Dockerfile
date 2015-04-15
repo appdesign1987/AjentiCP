@@ -3,7 +3,7 @@ FROM ubuntu:latest
 MAINTAINER paimpozhil@gmail.com
 
 RUN apt-get update
-RUN rm -R /etc/apt/apt.conf.d/02compress-indexes
+#RUN rm -R /etc/apt/apt.conf.d/02compress-indexes
 RUN apt-get -y install apt-show-versions && apt-get update && apt-get install -f
 
 
