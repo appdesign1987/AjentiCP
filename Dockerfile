@@ -15,4 +15,5 @@ RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.
 
 EXPOSE 22 21 80 8000 3306 443 25 993 110
 
-CMD ["/sbin/init"]
+#Start app                                                                                                                                                                                                  
+ENTRYPOINT ["/scripts/StartAjenti.sh"]
