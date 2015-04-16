@@ -14,7 +14,7 @@ RUN apt-get -y install wget
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
 # install the Mysql / php / git / cron / duplicity / backup ninja
-RUN apt-get -y --no-install-recommends install nano openssh-server git mysql-server php5-mysql \
+RUN apt-get -y --no-install-recommends install nano cron openssh-server git mysql-server php5-mysql \
 			  php5-gd php5-mcrypt php5-curl php-soap\
 			  php5-cli tar\
 			  backupninja duplicity vsftpd
