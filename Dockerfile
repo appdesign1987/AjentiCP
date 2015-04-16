@@ -14,6 +14,13 @@ RUN apt-get -y install wget
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
 #fix to get pure-ftpd working
+
+# install package building helpers
+RUN apt-get -y --force-yes install dpkg-dev debhelper
+
+# install dependancies
+RUN apt-get -y build-dep pure-ftpd
+
 # build from source
 RUN mkdir /tmp/pure-ftpd/ && \
     cd /tmp/pure-ftpd/ && \
