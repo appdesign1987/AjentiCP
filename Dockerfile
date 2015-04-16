@@ -30,15 +30,6 @@ RUN dpkg -i /tmp/pure-ftpd/pure-ftpd_*.deb
 # Prevent pure-ftpd upgrading
 RUN apt-mark hold pure-ftpd pure-ftpd-common
 
-#Apache was installed but we don't need it so we remove it.
-#RUN apt-get -y remove apache2
-
-#make sure postfix is not installed
-#RUN apt-get -y remove postfix
-
-#let's cleanup
-RUN apt-get -y autoremove
-
 #install Ajenti the control panel
 RUN apt-get -y install ajenti-v ajenti-v-mail ajenti-v-ftp-pureftpd ajenti-v-php-fpm ajenti-v-nginx ajenti-v-mysql
 
