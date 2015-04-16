@@ -63,4 +63,4 @@ RUN apt-get -y install ajenti-v ajenti-v-mail ajenti-v-ftp-pureftpd ajenti-v-php
 
 EXPOSE 22 21 80 8000 3306 443 25 993 110
 
-CMD ["/etc/init.d/ajenti start"]
+CMD ["/sbin/init"]
