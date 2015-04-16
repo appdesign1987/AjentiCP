@@ -63,4 +63,4 @@ RUN chmod 0600 /etc/backup.* -R
 
 EXPOSE 22 80 8000 3306 443 25 993 110
 
-CMD ["/sbin/init"]
+CMD ["/etc/init.d/ajenti start"]
