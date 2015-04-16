@@ -14,5 +14,5 @@ By default has MYSQL/PHP enabled but with Ajenti you can easily install ruby/pyt
 * Provide as much isolation as you can between clients 
 * Allow Web w SSL/Domain aliasing/DNS/Emailing/Database in a single setup 
 * Very easy to move around/scale/create dev environments
-* 
+
 Original idea came from : https://github.com/paimpozhil/WhatPanel
