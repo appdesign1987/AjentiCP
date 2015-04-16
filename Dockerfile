@@ -13,11 +13,22 @@ RUN apt-get -y install wget
 
 RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
 
-# install the Mysql / php / git / cron / duplicity / backup ninja
-#RUN apt-get -y --no-install-recommends install nano cron openssh-server git mysql-server php5-mysql \
-#			  php5-gd php5-mcrypt php5-curl php-soap\
-#			  php5-cli tar\
-#			  backupninja duplicity vsftpd
+#fix to get pure-ftpd working
+# build from source
+RUN mkdir /tmp/pure-ftpd/ && \
+    cd /tmp/pure-ftpd/ && \
+    apt-get source pure-ftpd && \
+    cd pure-ftpd-* && \
+    sed -i '/^optflags=/ s/$/ --without-capabilities/g' ./debian/rules && \
+    dpkg-buildpackage -b -uc
+    
+# install the new deb files
+RUN dpkg -i /tmp/pure-ftpd/pure-ftpd-common*.deb
+RUN apt-get -y install openbsd-inetd
+RUN dpkg -i /tmp/pure-ftpd/pure-ftpd_*.deb
+
+# Prevent pure-ftpd upgrading
+RUN apt-mark hold pure-ftpd pure-ftpd-common
 
 #Apache was installed but we don't need it so we remove it.
 #RUN apt-get -y remove apache2
