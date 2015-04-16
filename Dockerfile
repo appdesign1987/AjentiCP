@@ -46,7 +46,7 @@ RUN sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
 RUN sed -i "s/#PermitRootLogin/PermitRootLogin/g" /etc/ssh/sshd_config
 
 #cron needs this fix
-RUN sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond
+#RUN sed -i '/session    required   pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/crond
 
 RUN echo 'root:ch@ngem3' | chpasswd
 
