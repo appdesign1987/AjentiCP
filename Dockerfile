@@ -54,13 +54,13 @@ RUN mkdir /scripts
 ADD mysqlsetup.sh /scripts/mysqlsetup.sh
 RUN chmod 0755 /scripts/*
 
-RUN echo "/scripts/mysqlsetup.sh" >> /etc/rc.d/rc.local
+RUN echo "/scripts/mysqlsetup.sh" >> /etc/init.d/rc.local
 
 ADD backup /etc/backup.d/
 
 RUN chmod 0600 /etc/backup.* -R
 
 
-EXPOSE 22 80 8000 3306 443
+EXPOSE 22 80 8000 3306 443 25 993 110
 
 CMD ["/sbin/init"]
