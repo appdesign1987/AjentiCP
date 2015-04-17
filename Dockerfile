@@ -59,6 +59,8 @@ RUN cd /scripts && chmod +x *.sh
  RUN ln -s /data/pureftpd /etc/pure-ftpd
  RUN mv /etc/ajenti /data/ajenti-config
  RUN ln -s /data/ajenti-config /etc/ajenti
+ RUN mv /etc/exim4 /data/exim4
+ RUN ln -s /data/exim4 /etc/exim4
 
 EXPOSE 22 21 80 8000 3306 443 25 993 110
 
