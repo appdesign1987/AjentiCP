@@ -11,8 +11,6 @@ RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update && apt-get 
 #RUN apt-get update
 RUN apt-get -y install wget git
 
-RUN wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
-
 # Git clone scripts repo
 RUN cd / && git clone https://github.com/appdesign1987/scripts.git
 
