@@ -6,6 +6,35 @@ RUN apt-get update
 RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes && apt-get update && apt-get -y install apt-show-versions
 #RUN apt-get -y install apt-show-versions && apt-get update && apt-get install -f
 
+#install ajenti
+wget -O- https://raw.github.com/Eugeny/ajenti/master/scripts/install-ubuntu.sh | sudo sh
+
+#fix to get pure-ftpd working
+
+# install package building helpers
+apt-get -y --force-yes install dpkg-dev debhelper
+
+# install dependancies
+apt-get -y build-dep pure-ftpd
+
+# build from source
+mkdir /tmp/pure-ftpd/ && \
+    cd /tmp/pure-ftpd/ && \
+    apt-get source pure-ftpd && \
+    cd pure-ftpd-* && \
+    sed -i '/^optflags=/ s/$/ --without-capabilities/g' ./debian/rules && \
+    dpkg-buildpackage -b -uc
+    
+# install the new deb files
+dpkg -i /tmp/pure-ftpd/pure-ftpd-common*.deb
+apt-get -y install openbsd-inetd
+dpkg -i /tmp/pure-ftpd/pure-ftpd_*.deb
+
+# Prevent pure-ftpd upgrading
+apt-mark hold pure-ftpd pure-ftpd-common
+
+#install Ajenti the control panel
+apt-get -y install ajenti-v ajenti-v-mail ajenti-v-ftp-pureftpd ajenti-v-php-fpm ajenti-v-nginx ajenti-v-mysql
 
 # Ubuntu default image for some reason does not have tools like Wget/Tar/etc so lets add them
 #RUN apt-get update
