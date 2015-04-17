@@ -46,6 +46,20 @@ RUN cd / && git clone https://github.com/appdesign1987/scripts.git
 # Make sure scripts are executable
 RUN cd /scripts && chmod +x *.sh
 
+#creating symlinks and moving folder to keep everything persistent
+ RUN mv /var/vmail /data/vmail
+ RUN ln -s /data/vmail /var/vmail
+ RUN mv /var/lib/mysql /data/mysql
+ RUN ln -s /data/mysql /var/lib/mysql
+ RUN mv /backup /data/backup
+ RUN ln -s /data/backup /backup
+ RUN mv /etc/nginx /data/nginx
+ RUN ln -s /data/nginx /etc/nginx
+ RUN mv /etc/pure-ftpd /data/pureftpd
+ RUN ln -s /data/pureftpd /etc/pure-ftpd
+ RUN mv /etc/ajenti /data/ajenti-config
+ RUN ln -s /data/ajenti-config /etc/ajenti
+
 EXPOSE 22 21 80 8000 3306 443 25 993 110
 
 #Start app                                                                                                                                                                                                  
