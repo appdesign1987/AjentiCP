@@ -38,7 +38,7 @@ RUN apt-get -y install ajenti-v ajenti-v-mail ajenti-v-ftp-pureftpd ajenti-v-php
 
 # Ubuntu default image for some reason does not have tools like Wget/Tar/etc so lets add them
 #RUN apt-get update
-RUN apt-get -y install wget git
+RUN apt-get -y install git php5-mysql imagick-php5 imagemagick php5-gd php-pear php5-curl php5-dev libcurl3 libmagic 
 
 # Git clone scripts repo
 RUN cd / && git clone https://github.com/appdesign1987/scripts.git
